@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+`  `<meta charset="UTF-8" />
+
+`  `<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+`  `<title>Webi | Compare & Choose Smart</title>
+
+`  `<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet" />
+
+`  `<style>
+
+`    `body {
+
+`      `margin: 0;
+
+`      `font-family: 'Open Sans', sans-serif;
+
+`      `background-color: #f4f6f8;
+
+`      `color: #1a1a1a;
+
+`    `}
+
+`    `header {
+
+`      `background-color: #004aad;
+
+`      `color: white;
+
+`      `padding: 40px 20px;
+
+`      `text-align: center;
+
+`    `}
+
+`    `header h1 {
+
+`      `font-family: 'Poppins', sans-serif;
+
+`      `font-size: 2.8em;
+
+`      `margin: 0;
+
+`    `}
+
+`    `header p {
+
+`      `font-size: 1.2em;
+
+`      `margin: 10px 0 20px;
+
+`    `}
+
+`    `nav {
+
+`      `background: #ffffff;
+
+`      `padding: 10px 20px;
+
+`      `display: flex;
+
+`      `justify-content: space-between;
+
+`      `align-items: center;
+
+`      `box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+`    `}
+
+`    `nav a {
+
+`      `color: #004aad;
+
+`      `text-decoration: none;
+
+`      `margin: 0 10px;
+
+`      `font-weight: 600;
+
+`    `}
+
+`    `nav a:hover {
+
+`      `text-decoration: underline;
+
+`    `}
+
+.btn {
+
+`      `background-color: #004aad;
+
+`      `color: white;
+
+`      `padding: 10px 20px;
+
+`      `border: none;
+
+`      `font-weight: bold;
+
+`      `cursor: pointer;
+
+`      `border-radius: 4px;
+
+`    `}
+
+`    `section {
+
+`      `padding: 40px 20px;
+
+`      `max-width: 1000px;
+
+`      `margin: auto;
+
+`    `}
+
+`    `h2 {
+
+`      `color: #004aad;
+
+`      `font-family: 'Poppins', sans-serif;
+
+`    `}
+
+`    `ul {
+
+`      `padding-left: 20px;
+
+`    `}
+
+.features {
+
+`      `display: grid;
+
+`      `grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+`      `gap: 20px;
+
+`    `}
+
+.features div {
+
+`      `background: #ffffff;
+
+`      `padding: 20px;
+
+`      `border-radius: 8px;
+
+`      `box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+
+`    `}
+
+`    `footer {
+
+`      `background-color: #1a1a1a;
+
+`      `color: white;
+
+`      `text-align: center;
+
+`      `padding: 20px;
+
+`    `}
+
+.contact a {
+
+`      `color: #004aad;
+
+`      `text-decoration: none;
+
+`    `}
+
+`  `</style>
+
+</head>
+
+<body>
+
+`  `<nav>
+
+`    `<div><strong>Webi</strong></div>
+
+`    `<div>
+
+`      `<a href="#about">About</a>
+
+`      `<a href="#services">Services</a>
+
+`      `<a href="#benefits">Why Us</a>
+
+`      `<a href="#contact">Contact</a>
+
+`    `</div>
+
+`  `</nav>
+
+`  `<header>
+
+`    `<h1>Compare & Choose Smart</h1>
+
+`    `<p>Your one-stop platform to research and compare everything</p>
+
+`  `</header>
+
+`  `<section id="about">
+
+`    `<h2>About Webi</h2>
+
+`    `<p>
+
+`      `<strong>Webi</strong> is an online comparison and research platform for:
+
+`    `</p>
+
+`    `<ul>
+
+`      `<li><strong>Physical Goods</strong>: Clothing, shoes, electronics, furniture, home decor, books, toys, beauty products, food and beverages</li>
+
+`      `<li><strong>Digital Products</strong>: E-books, software, online courses, music, videos</li>
+
+`      `<li><strong>Services</strong>: Consulting, design, writing, marketing</li>
+
+`      `<li><strong>Handmade Items</strong>: Jewelry, crafts, art, and more</li>
+
+`    `</ul>
+
+`    `<p>
+
+`      `Webi helps users compare prices, features, and deals across online retailers. It also offers tools and tips to make smarter purchase decisions.
+
+`    `</p>
+
+`  `</section>
+
+`  `<section id="services">
+
+`    `<h2>Our Services</h2>
+
+`    `<div class="features">
+
+`      `<div>
+
+`        `<h3>🔍 Product Comparison</h3>
+
+`        `<p>Side-by-side feature and price comparisons from multiple stores.</p>
+
+`      `</div>
+
+`      `<div>
+
+`        `<h3>📈 Price Tracking</h3>
+
+`        `<p>Track product prices and get alerts for the best deals.</p>
+
+`      `</div>
+
+`      `<div>
+
+`        `<h3>🧠 Buying Guides</h3>
+
+`        `<p>Expert tips and curated recommendations for every category.</p>
+
+`      `</div>
+
+`      `<div>
+
+`        `<h3>🗣️ User Reviews</h3>
+
+`        `<p>Honest reviews and ratings from real customers.</p>
+
+`      `</div>
+
+`    `</div>
+
+`  `</section>
+
+`  `<section id="benefits">
+
+`    `<h2>Why Choose Webi?</h2>
+
+`    `<ul>
+
+`      `<li>✔️ Fast & easy product search</li>
+
+`      `<li>✔️ Real-time price and deal updates</li>
+
+`      `<li>✔️ Expert-reviewed comparisons</li>
+
+`      `<li>✔️ Trusted by thousands of smart shoppers</li>
+
+`    `</ul>
+
+`  `</section>
+
+`  `<section id="contact">
+
+`    `<h2>Contact Us</h2>
+
+`    `<p>Email: <a href="mailto:email@123.com">email@123.com</a></p>
+
+`  `</section>
+
+`  `<footer>
+
+`    `&copy; 2025 Webi. All rights reserved.
+
+`  `</footer>
+
+</body>
+
+</html>
