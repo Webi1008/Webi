@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Webi | Compare & Choose Smart</title>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet" />
 <style>
@@ -11,57 +11,23 @@
     --secondary-color: #ffffff;
     --accent-color: #0077ff;
     --text-color: #1a1a1a;
+    --shadow-light: rgba(0, 74, 173, 0.2);
   }
-
+  * {
+    box-sizing: border-box;
+  }
   html {
     scroll-behavior: smooth;
   }
-
   body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
     background-color: #f4f6f8;
     color: var(--text-color);
   }
-
-  header {
-    background: linear-gradient(135deg, #004aad, #0066cc);
-    color: var(--secondary-color);
-    text-align: center;
-    padding: 80px 20px;
-    position: relative;
-  }
-
-  header::after {
-    content: "";
-    background: url('https://source.unsplash.com/1600x600/?technology,shopping') center/cover no-repeat;
-    opacity: 0.2;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    z-index: 0;
-  }
-
-  header h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 3em;
-    margin: 0;
-    position: relative;
-    z-index: 1;
-  }
-
-  header p {
-    font-size: 1.2em;
-    margin-top: 10px;
-    position: relative;
-    z-index: 1;
-  }
-
   nav {
     background: var(--secondary-color);
-    padding: 15px 20px;
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,90 +36,177 @@
     top: 0;
     z-index: 100;
   }
-
   nav a {
     color: var(--primary-color);
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 15px;
     font-weight: 600;
+    font-size: 1.05rem;
+    transition: color 0.3s;
   }
-
   nav a:hover {
     color: var(--accent-color);
   }
+  nav div:first-child {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+  }
+  header {
+    position: relative;
+    height: 600px;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 0 20px;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 74, 173, 0.65);
+    z-index: 0;
+  }
+  header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1.5px;
+  }
+  header p {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+  }
 
-  section {
-    padding: 60px 20px;
+  main {
     max-width: 1200px;
     margin: auto;
+    padding: 60px 20px 40px;
+  }
+
+  section {
+    margin-bottom: 80px;
+    position: relative;
   }
 
   h2 {
     color: var(--primary-color);
     font-family: 'Poppins', sans-serif;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-size: 2.4rem;
+    text-align: center;
   }
 
   ul {
+    max-width: 700px;
+    margin: auto;
     padding-left: 20px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  ul li {
+    margin-bottom: 12px;
   }
 
   .features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
   }
 
   .features div {
     background: var(--secondary-color);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 20px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
   }
-
   .features div:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px var(--shadow-light);
   }
-
   .features img {
     width: 100%;
-    border-radius: 8px;
-    margin-bottom: 15px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .btn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 14px 32px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+  }
+  .btn:hover {
+    background-color: #003a8c;
   }
 
   footer {
     background-color: #1a1a1a;
     color: var(--secondary-color);
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
+    font-size: 1rem;
   }
 
   .contact a {
     color: var(--accent-color);
     text-decoration: none;
+    font-weight: 600;
   }
 
-  .btn {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  /* SVG Wave */
+  .wave {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    margin-bottom: -6px;
+  }
+  .wave svg {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
-  .btn:hover {
-    background-color: #003a8c;
+  /* Responsive */
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.1rem;
+    }
+    nav a {
+      margin: 0 8px;
+      font-size: 0.95rem;
+    }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <div><strong>Webi</strong></div>
+  <div>Webi</div>
   <div>
     <a href="#about">About</a>
     <a href="#services">Services</a>
@@ -167,39 +220,51 @@
   <p>Your one-stop platform to research and compare everything</p>
 </header>
 
+<!-- Wave Separator -->
+<div class="wave">
+  <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#f4f6f8" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path></svg>
+</div>
+
 <main>
+
   <section id="about">
     <h2>About Webi</h2>
-    <p><strong>Webi</strong> is an online comparison and research platform for:</p>
     <ul>
-      <li>✔️ Physical Goods: clothing, shoes, electronics, furniture, etc.</li>
-      <li>✔️ Digital Products: e-books, software, online courses, music, etc.</li>
-      <li>✔️ Services: consulting, design, writing, marketing</li>
-      <li>✔️ Handmade Items: jewelry, crafts, art, and more</li>
+      <li>🛍️ <strong>Physical Goods</strong>: clothing, shoes, electronics, furniture, home decor, books, toys, beauty products, food & beverages</li>
+      <li>💻 <strong>Digital Products</strong>: e-books, software, online courses, music, videos</li>
+      <li>🛠️ <strong>Services</strong>: consulting, design, writing, marketing</li>
+      <li>🎨 <strong>Handmade Items</strong>: jewelry, crafts, art, and more</li>
     </ul>
-    <p>Webi helps users compare prices, features, and deals across online retailers.</p>
+    <p style="text-align:center; max-width: 700px; margin: 40px auto 0;">
+      Webi helps users compare prices, features, and deals across online retailers. It also offers tools and tips to make smarter purchase decisions.
+    </p>
   </section>
+
+  <!-- Wave Separator -->
+  <div class="wave" style="transform: rotate(180deg); margin-top: -60px; margin-bottom: 60px;">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path></svg>
+  </div>
 
   <section id="services">
     <h2>Our Services</h2>
     <div class="features">
       <div>
-        <img src="https://source.unsplash.com/400x250/?comparison,shopping" alt="Product Comparison" />
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Product Comparison" />
         <h3>🔍 Product Comparison</h3>
         <p>Side-by-side feature and price comparisons from multiple stores.</p>
       </div>
       <div>
-        <img src="https://source.unsplash.com/400x250/?analytics,price" alt="Price Tracking" />
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Price Tracking" />
         <h3>📈 Price Tracking</h3>
         <p>Track product prices and get alerts for the best deals.</p>
       </div>
       <div>
-        <img src="https://source.unsplash.com/400x250/?guide,review" alt="Buying Guides" />
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80" alt="Buying Guides" />
         <h3>🧠 Buying Guides</h3>
         <p>Expert tips and curated recommendations for every category.</p>
       </div>
       <div>
-        <img src="https://source.unsplash.com/400x250/?feedback,review" alt="User Reviews" />
+        <img src="https://images.unsplash.com/photo-1531497865142-58888b458b08?auto=format&fit=crop&w=400&q=80" alt="User Reviews" />
         <h3>🗣️ User Reviews</h3>
         <p>Honest reviews and ratings from real customers.</p>
       </div>
@@ -208,7 +273,7 @@
 
   <section id="benefits">
     <h2>Why Choose Webi?</h2>
-    <ul>
+    <ul style="max-width: 700px; margin: auto; font-size: 1.15rem; line-height: 1.7;">
       <li>✔️ Fast & easy product search</li>
       <li>✔️ Real-time price and deal updates</li>
       <li>✔️ Expert-reviewed comparisons</li>
@@ -216,11 +281,12 @@
     </ul>
   </section>
 
-  <section id="contact">
+  <section id="contact" style="text-align:center;">
     <h2>Contact Us</h2>
     <p>Email: <a href="mailto:email@123.com">email@123.com</a></p>
-    <p><button class="btn">Send Us a Message</button></p>
+    <button class="btn" onclick="alert('Thanks for reaching out! We will get back to you soon.')">Send Us a Message</button>
   </section>
+
 </main>
 
 <footer>
