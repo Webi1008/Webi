@@ -1,249 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Webi | Compare & Choose Smart</title>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --primary-color: #004aad;
-    --secondary-color: #ffffff;
-    --accent-color: #0077ff;
-    --text-color: #1a1a1a;
-    --shadow-light: rgba(0, 74, 173, 0.2);
-  }
-  * {
-    box-sizing: border-box;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f4f6f8;
-    color: var(--text-color);
-  }
-  nav {
-    background: var(--secondary-color);
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  nav a {
-    color: var(--primary-color);
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: 600;
-    font-size: 1.05rem;
-    transition: color 0.3s;
-  }
-  nav a:hover {
-    color: var(--accent-color);
-  }
-  nav div:first-child {
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-  }
-  header {
-    position: relative;
-    height: 600px;
-    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--secondary-color);
-    text-align: center;
-    padding: 0 20px;
-  }
-  header::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 74, 173, 0.65);
-    z-index: 0;
-  }
-  header h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 3.5rem;
-    margin: 0;
-    position: relative;
-    z-index: 1;
-    letter-spacing: 1.5px;
-  }
-  header p {
-    font-size: 1.5rem;
-    margin-top: 15px;
-    position: relative;
-    z-index: 1;
-    max-width: 600px;
-  }
-
-  main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 60px 20px 40px;
-  }
-
-  section {
-    margin-bottom: 80px;
-    position: relative;
-  }
-
-  h2 {
-    color: var(--primary-color);
-    font-family: 'Poppins', sans-serif;
-    margin-bottom: 25px;
-    font-size: 2.4rem;
-    text-align: center;
-  }
-
-  ul {
-    max-width: 700px;
-    margin: auto;
-    padding-left: 20px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #333;
-  }
-
-  ul li {
-    margin-bottom: 12px;
-  }
-
-  .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-  }
-
-  .features div {
-    background: var(--secondary-color);
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 8px 20px var(--shadow-light);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-  }
-  .features div:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px var(--shadow-light);
-  }
-  .features img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-
-  .btn {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    padding: 14px 32px;
-    border: none;
-    border-radius: 6px;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
-  }
-  .btn:hover {
-    background-color: #003a8c;
-  }
-
-  footer {
-    background-color: #1a1a1a;
-    color: var(--secondary-color);
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 1rem;
-  }
-
-  .contact a {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  /* SVG Wave */
-  .wave {
-    position: relative;
-    width: 100%;
-    height: 100px;
-    margin-bottom: -6px;
-  }
-  .wave svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* Responsive */
-  @media (max-width: 600px) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webi | Compare & Choose Smart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f4f6f8;
+      color: #1a1a1a;
+      position: relative;
+      overflow-x: hidden;
+    }
+    /* Blob shape behind header */
+    header {
+      background-color: #004aad;
+      color: white;
+      padding: 60px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: visible;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: #0056d2;
+      border-radius: 60% 40% 70% 30% / 30% 60% 40% 70%;
+      opacity: 0.4;
+      filter: blur(70px);
+      z-index: 0;
+    }
     header h1 {
-      font-size: 2.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8em;
+      margin: 0;
+      position: relative;
+      z-index: 1;
     }
     header p {
-      font-size: 1.1rem;
+      font-size: 1.2em;
+      margin: 10px 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+    nav {
+      background: #ffffff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     nav a {
-      margin: 0 8px;
-      font-size: 0.95rem;
+      color: #004aad;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 600;
+      transition: color 0.3s ease;
     }
-  }
-</style>
+    nav a:hover {
+      text-decoration: underline;
+      color: #002d70;
+    }
+    .btn {
+      background-color: #004aad;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+    }
+    /* Soft blob behind services */
+    #services::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -120px;
+      width: 350px;
+      height: 350px;
+      background: #c2dbff;
+      border-radius: 60% 40% 70% 30% / 30% 60% 40% 70%;
+      filter: blur(70px);
+      z-index: -1;
+    }
+    h2 {
+      color: #004aad;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 20px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .features div {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .features div img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+    .features div:hover img {
+      transform: scale(1.05);
+    }
+    /* Diagonal line accent in Why Us */
+    #benefits {
+      position: relative;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    #benefits::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, #004aad, #87a8ff);
+      border-radius: 3px;
+      opacity: 0.8;
+      z-index: 0;
+    }
+    #benefits ul {
+      position: relative;
+      z-index: 1;
+      list-style: none;
+      padding-left: 0;
+    }
+    #benefits ul li {
+      padding-left: 30px;
+      margin-bottom: 15px;
+      position: relative;
+      font-weight: 600;
+      color: #004aad;
+    }
+    #benefits ul li::before {
+      content: '✔️';
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 1.2em;
+    }
+    footer {
+      background-color: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .contact a {
+      color: #004aad;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
+  <nav>
+    <div><strong>Webi</strong></div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#benefits">Why Us</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-<nav>
-  <div>Webi</div>
-  <div>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#benefits">Why Us</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-<header>
-  <h1>Compare & Choose Smart</h1>
-  <p>Your one-stop platform to research and compare everything</p>
-</header>
-
-<!-- Wave Separator -->
-<div class="wave">
-  <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#f4f6f8" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path></svg>
-</div>
-
-<main>
+  <header>
+    <h1>Compare & Choose Smart</h1>
+    <p>Your one-stop platform to research and compare everything</p>
+  </header>
 
   <section id="about">
     <h2>About Webi</h2>
+    <p>
+      <strong>Webi</strong> is an online comparison and research platform for:
+    </p>
     <ul>
-      <li>🛍️ <strong>Physical Goods</strong>: clothing, shoes, electronics, furniture, home decor, books, toys, beauty products, food & beverages</li>
-      <li>💻 <strong>Digital Products</strong>: e-books, software, online courses, music, videos</li>
-      <li>🛠️ <strong>Services</strong>: consulting, design, writing, marketing</li>
-      <li>🎨 <strong>Handmade Items</strong>: jewelry, crafts, art, and more</li>
+      <li><strong>Physical Goods</strong>: Clothing, shoes, electronics, furniture, home decor, books, toys, beauty products, food and beverages</li>
+      <li><strong>Digital Products</strong>: E-books, software, online courses, music, videos</li>
+      <li><strong>Services</strong>: Consulting, design, writing, marketing</li>
+      <li><strong>Handmade Items</strong>: Jewelry, crafts, art, and more</li>
     </ul>
-    <p style="text-align:center; max-width: 700px; margin: 40px auto 0;">
+    <p>
       Webi helps users compare prices, features, and deals across online retailers. It also offers tools and tips to make smarter purchase decisions.
     </p>
   </section>
-
-  <!-- Wave Separator -->
-  <div class="wave" style="transform: rotate(180deg); margin-top: -60px; margin-bottom: 60px;">
-    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path></svg>
-  </div>
 
   <section id="services">
     <h2>Our Services</h2>
@@ -264,7 +236,7 @@
         <p>Expert tips and curated recommendations for every category.</p>
       </div>
       <div>
-        <img src="https://images.unsplash.com/photo-1531497865142-58888b458b08?auto=format&fit=crop&w=400&q=80" alt="User Reviews" />
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=400&q=80" alt="User Reviews" />
         <h3>🗣️ User Reviews</h3>
         <p>Honest reviews and ratings from real customers.</p>
       </div>
@@ -273,25 +245,21 @@
 
   <section id="benefits">
     <h2>Why Choose Webi?</h2>
-    <ul style="max-width: 700px; margin: auto; font-size: 1.15rem; line-height: 1.7;">
-      <li>✔️ Fast & easy product search</li>
-      <li>✔️ Real-time price and deal updates</li>
-      <li>✔️ Expert-reviewed comparisons</li>
-      <li>✔️ Trusted by thousands of smart shoppers</li>
+    <ul>
+      <li>Fast & easy product search</li>
+      <li>Real-time price and deal updates</li>
+      <li>Expert-reviewed comparisons</li>
+      <li>Trusted by thousands of smart shoppers</li>
     </ul>
   </section>
 
-  <section id="contact" style="text-align:center;">
+  <section id="contact">
     <h2>Contact Us</h2>
     <p>Email: <a href="mailto:email@123.com">email@123.com</a></p>
-    <button class="btn" onclick="alert('Thanks for reaching out! We will get back to you soon.')">Send Us a Message</button>
   </section>
 
-</main>
-
-<footer>
-  &copy; 2025 Webi. All rights reserved.
-</footer>
-
+  <footer>
+    &copy; 2025 Webi. All rights reserved.
+  </footer>
 </body>
 </html>
