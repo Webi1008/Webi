@@ -14,7 +14,6 @@
       position: relative;
       overflow-x: hidden;
     }
-    /* Blob shape behind header */
     header {
       background-color: #004aad;
       color: white;
@@ -87,7 +86,6 @@
       position: relative;
       z-index: 1;
     }
-    /* Soft blob behind services */
     #services::before {
       content: '';
       position: absolute;
@@ -133,7 +131,6 @@
     .features div:hover img {
       transform: scale(1.05);
     }
-    /* Diagonal line accent in Why Us */
     #benefits {
       position: relative;
       padding-left: 40px;
@@ -203,18 +200,14 @@
 
   <section id="about">
     <h2>About Webi</h2>
-    <p>
-      <strong>Webi</strong> is an online comparison and research platform for:
-    </p>
+    <p><strong>Webi</strong> is an online comparison and research platform for:</p>
     <ul>
-      <li><strong>Physical Goods</strong>: Clothing, shoes, electronics, furniture, home decor, books, toys, beauty products, food and beverages</li>
-      <li><strong>Digital Products</strong>: E-books, software, online courses, music, videos</li>
-      <li><strong>Services</strong>: Consulting, design, writing, marketing</li>
-      <li><strong>Handmade Items</strong>: Jewelry, crafts, art, and more</li>
+      <li><strong>Physical Goods</strong>: Clothing, electronics, furniture, etc.</li>
+      <li><strong>Digital Products</strong>: E-books, software, courses</li>
+      <li><strong>Services</strong>: Consulting, design, marketing</li>
+      <li><strong>Handmade Items</strong>: Jewelry, crafts, art</li>
     </ul>
-    <p>
-      Webi helps users compare prices, features, and deals across online retailers. It also offers tools and tips to make smarter purchase decisions.
-    </p>
+    <p>Webi helps users compare prices, features, and deals across online retailers.</p>
   </section>
 
   <section id="services">
@@ -223,22 +216,42 @@
       <div>
         <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Product Comparison" />
         <h3>🔍 Product Comparison</h3>
-        <p>Side-by-side feature and price comparisons from multiple stores.</p>
+        <p>
+          Compare features and prices across stores.<br />
+          <a href="https://www.google.com/search?q=compare+products" target="_blank">Search Products on Google</a>
+        </p>
       </div>
       <div>
         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Price Tracking" />
         <h3>📈 Price Tracking</h3>
-        <p>Track product prices and get alerts for the best deals.</p>
+        <p>
+          Get alerts for deals on:<br />
+          <a href="https://www.amazon.in" target="_blank">Amazon</a>,
+          <a href="https://www.flipkart.com" target="_blank">Flipkart</a>,
+          <a href="https://www.91mobiles.com" target="_blank">91Mobiles</a>,
+          <a href="https://www.bestreviewsonline.in/new-deals" target="_blank">BestReviewsOnline</a>
+        </p>
       </div>
       <div>
         <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80" alt="Buying Guides" />
         <h3>🧠 Buying Guides</h3>
-        <p>Expert tips and curated recommendations for every category.</p>
+        <p>
+          Expert tips for smarter shopping.<br />
+          <a href="https://webi1008.github.io/Webi/" target="_blank">View Webi Guides</a>
+        </p>
       </div>
       <div>
         <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=400&q=80" alt="User Reviews" />
         <h3>🗣️ User Reviews</h3>
-        <p>Honest reviews and ratings from real customers.</p>
+        <p>
+          “I had a fantastic experience with Webi! Their team was incredibly responsive and knowledgeable. I appreciated their transparency and efficiency. Highly recommend!” – Jon Bein<br /><br />
+          <strong>Tips for Good Reviews:</strong><br />
+          ✅ Be specific<br />
+          ✅ Be excited<br />
+          ✅ Recommend clearly<br />
+          ✅ Keep it clear<br />
+          ✅ Focus on positives
+        </p>
       </div>
     </div>
   </section>
