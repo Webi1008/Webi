@@ -11,8 +11,6 @@
       font-family: 'Open Sans', sans-serif;
       background-color: #f4f6f8;
       color: #1a1a1a;
-      position: relative;
-      overflow-x: hidden;
     }
     header {
       background-color: #004aad;
@@ -20,7 +18,6 @@
       padding: 60px 20px 80px;
       text-align: center;
       position: relative;
-      overflow: visible;
     }
     header::before {
       content: '';
@@ -39,14 +36,14 @@
       font-family: 'Poppins', sans-serif;
       font-size: 2.8em;
       margin: 0;
-      position: relative;
       z-index: 1;
+      position: relative;
     }
     header p {
       font-size: 1.2em;
       margin: 10px 0 20px;
-      position: relative;
       z-index: 1;
+      position: relative;
     }
     nav {
       background: #ffffff;
@@ -83,8 +80,6 @@
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
-      position: relative;
-      z-index: 1;
     }
     #services::before {
       content: '';
@@ -118,7 +113,6 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
       text-align: center;
       position: relative;
-      overflow: hidden;
     }
     .features div img {
       width: 100%;
@@ -127,30 +121,12 @@
       border-radius: 6px;
       margin-bottom: 15px;
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
     .features div:hover img {
       transform: scale(1.05);
     }
-    #benefits {
-      position: relative;
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-    #benefits::after {
-      content: '';
-      position: absolute;
-      top: 20px;
-      left: 0;
-      width: 6px;
-      height: 100%;
-      background: linear-gradient(180deg, #004aad, #87a8ff);
-      border-radius: 3px;
-      opacity: 0.8;
-      z-index: 0;
-    }
     #benefits ul {
-      position: relative;
-      z-index: 1;
       list-style: none;
       padding-left: 0;
     }
@@ -173,12 +149,32 @@
       color: white;
       text-align: center;
       padding: 20px;
-      position: relative;
-      z-index: 1;
     }
-    .contact a {
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .modal-content a {
+      display: block;
+      margin: 10px 0;
       color: #004aad;
       text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -202,59 +198,55 @@
     <h2>About Webi</h2>
     <p><strong>Webi</strong> is an online comparison and research platform for:</p>
     <ul>
-      <li><strong>Physical Goods</strong>: Clothing, electronics, furniture, etc.</li>
-      <li><strong>Digital Products</strong>: E-books, software, courses</li>
-      <li><strong>Services</strong>: Consulting, design, marketing</li>
-      <li><strong>Handmade Items</strong>: Jewelry, crafts, art</li>
+      <li>Physical Goods: Clothing, electronics, books, etc.</li>
+      <li>Digital Products: E-books, software, courses, etc.</li>
+      <li>Services: Consulting, writing, marketing</li>
+      <li>Handmade Items: Jewelry, crafts, art</li>
     </ul>
-    <p>Webi helps users compare prices, features, and deals across online retailers.</p>
+    <p>Compare prices, features, and deals across online retailers.</p>
   </section>
 
   <section id="services">
     <h2>Our Services</h2>
     <div class="features">
       <div>
-        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Product Comparison" />
+        <a href="https://www.google.com/search?q=product+comparison" target="_blank">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Product Comparison" />
+        </a>
         <h3>🔍 Product Comparison</h3>
-        <p>
-          Compare features and prices across stores.<br />
-          <a href="https://www.google.com/search?q=compare+products" target="_blank">Search Products on Google</a>
-        </p>
+        <p>Compare products instantly via Google Search.</p>
       </div>
       <div>
-        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Price Tracking" />
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Price Tracking" onclick="document.getElementById('priceModal').style.display='block'" />
         <h3>📈 Price Tracking</h3>
-        <p>
-          Get alerts for deals on:<br />
-          <a href="https://www.amazon.in" target="_blank">Amazon</a>,
-          <a href="https://www.flipkart.com" target="_blank">Flipkart</a>,
-          <a href="https://www.91mobiles.com" target="_blank">91Mobiles</a>,
-          <a href="https://www.bestreviewsonline.in/new-deals" target="_blank">BestReviewsOnline</a>
-        </p>
+        <p>Track deals across Amazon, Flipkart, and more.</p>
       </div>
       <div>
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80" alt="Buying Guides" />
+        <a href="https://webi1008.github.io/Webi/" target="_blank">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80" alt="Buying Guides" />
+        </a>
         <h3>🧠 Buying Guides</h3>
-        <p>
-          Expert tips for smarter shopping.<br />
-          <a href="https://webi1008.github.io/Webi/" target="_blank">View Webi Guides</a>
-        </p>
+        <p>Expert advice for smart shopping decisions.</p>
       </div>
       <div>
         <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=400&q=80" alt="User Reviews" />
         <h3>🗣️ User Reviews</h3>
         <p>
-          “I had a fantastic experience with Webi! Their team was incredibly responsive and knowledgeable. I appreciated their transparency and efficiency. Highly recommend!” – Jon Bein<br /><br />
-          <strong>Tips for Good Reviews:</strong><br />
-          ✅ Be specific<br />
-          ✅ Be excited<br />
-          ✅ Recommend clearly<br />
-          ✅ Keep it clear<br />
-          ✅ Focus on positives
+          “I had a fantastic experience working with Webi! Their team was incredibly responsive and knowledgeable. I especially appreciated their transparency and efficiency. Highly recommended!” — Jon Bein
         </p>
       </div>
     </div>
   </section>
+
+  <div id="priceModal" class="modal" onclick="this.style.display='none'">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <h3>Choose a Site</h3>
+      <a href="https://www.amazon.in/" target="_blank">Amazon</a>
+      <a href="https://www.flipkart.com/" target="_blank">Flipkart</a>
+      <a href="https://www.91mobiles.com/" target="_blank">99Mobiles</a>
+      <a href="https://www.bestreviewsonline.in/new-deals" target="_blank">BestReviewsOnline Deals</a>
+    </div>
+  </div>
 
   <section id="benefits">
     <h2>Why Choose Webi?</h2>
