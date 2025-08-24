@@ -1,270 +1,448 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Webi | Compare & Choose Smart</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      background-color: #f4f6f8;
-      color: #1a1a1a;
-    }
-    header {
-      background-color: #004aad;
-      color: white;
-      padding: 60px 20px 80px;
-      text-align: center;
-      position: relative;
-    }
-    header::before {
-      content: '';
-      position: absolute;
-      top: -80px;
-      left: -100px;
-      width: 300px;
-      height: 300px;
-      background: #0056d2;
-      border-radius: 60% 40% 70% 30% / 30% 60% 40% 70%;
-      opacity: 0.4;
-      filter: blur(70px);
-      z-index: 0;
-    }
-    header h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.8em;
-      margin: 0;
-      z-index: 1;
-      position: relative;
-    }
-    header p {
-      font-size: 1.2em;
-      margin: 10px 0 20px;
-      z-index: 1;
-      position: relative;
-    }
-    nav {
-      background: #ffffff;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    nav a {
-      color: #004aad;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      text-decoration: underline;
-      color: #002d70;
-    }
-    .btn {
-      background-color: #004aad;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    #services::before {
-      content: '';
-      position: absolute;
-      top: -60px;
-      right: -120px;
-      width: 350px;
-      height: 350px;
-      background: #c2dbff;
-      border-radius: 60% 40% 70% 30% / 30% 60% 40% 70%;
-      filter: blur(70px);
-      z-index: -1;
-    }
-    h2 {
-      color: #004aad;
-      font-family: 'Poppins', sans-serif;
-      margin-bottom: 20px;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-    .features div {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-      text-align: center;
-      position: relative;
-    }
-    .features div img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 15px;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .features div:hover img {
-      transform: scale(1.05);
-    }
-    #benefits ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    #benefits ul li {
-      padding-left: 30px;
-      margin-bottom: 15px;
-      position: relative;
-      font-weight: 600;
-      color: #004aad;
-    }
-    #benefits ul li::before {
-      content: '✔️';
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-size: 1.2em;
-    }
-    footer {
-      background-color: #1a1a1a;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-    }
-    .modal-content {
-      background: white;
-      margin: 10% auto;
-      padding: 20px;
-      width: 90%;
-      max-width: 400px;
-      border-radius: 10px;
-      text-align: center;
-    }
-    .modal-content a {
-      display: block;
-      margin: 10px 0;
-      color: #004aad;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Webi | Smart Product Comparisons</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#004aad;--primary-2:#0b66ff;--bg:#f4f6f8;--card:#fff;--ink:#1a1a1a;--muted:#667085;--chip:#e6f0ff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Open Sans",system-ui,Arial;background:var(--bg);color:var(--ink)}
+  a{color:var(--primary);text-decoration:none}
+  /* Nav */
+  nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eef2f7}
+  .nav-wrap{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+  .brand{font-family:Poppins,system-ui;font-weight:600;color:var(--primary);font-size:20px}
+  .nav-links a{margin:0 10px;font-weight:600}
+  /* Hero */
+  header{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;text-align:center;padding:64px 20px}
+  h1{margin:0 0 8px 0;font-family:Poppins;font-size:40px}
+  .sub{opacity:.95;margin:0 0 20px 0}
+  .cta{display:inline-block;background:#ffce00;color:#111;padding:12px 22px;border-radius:28px;font-weight:700}
+  /* Layout */
+  .shell{max-width:1200px;margin:24px auto;padding:0 20px;display:grid;grid-template-columns: 280px 1fr;gap:20px}
+  @media (max-width: 960px){.shell{grid-template-columns:1fr}}
+  /* Filters */
+  .filters{background:#fff;border:1px solid #eef2f7;border-radius:12px;padding:16px;position:sticky;top:72px;height:fit-content}
+  .filters h3{margin:0 0 12px 0;color:var(--primary)}
+  .f-group{margin-bottom:12px}
+  label{display:block;font-weight:600;margin-bottom:6px}
+  select,input[type="text"],input[type="number"]{width:100%;padding:10px;border:1px solid #d0d5dd;border-radius:8px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .chip{background:var(--chip);padding:6px 10px;border-radius:999px;font-size:12px}
+  .apply{width:100%;margin-top:8px;background:var(--primary);color:#fff;border:none;padding:10px;border-radius:8px;font-weight:700;cursor:pointer}
+  .clear{width:100%;margin-top:8px;background:#fff;color:var(--primary);border:1px solid var(--primary);padding:10px;border-radius:8px;font-weight:700;cursor:pointer}
+  /* Toolbar */
+  .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .search{flex:1;min-width:220px}
+  .sort{min-width:200px}
+  /* Grid */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media (max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.grid{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid #eef2f7;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px;transition:.2s box-shadow,.2s transform}
+  .card:hover{box-shadow:0 10px 24px rgba(16,24,40,.08);transform:translateY(-2px)}
+  .thumb{height:160px;display:flex;align-items:center;justify-content:center;background:#fafbff;border-radius:10px;overflow:hidden}
+  .thumb img{max-height:90%;max-width:90%;object-fit:contain;display:block}
+  .title{font-weight:700;line-height:1.3}
+  .muted{color:#667085;font-size:13px}
+  .price{color:var(--primary);font-weight:800}
+  .rate{color:#f59e0b;font-weight:700}
+  .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .btn{display:inline-block;text-align:center;padding:10px 12px;border-radius:10px;font-weight:700}
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-outline{border:1px solid var(--primary);color:var(--primary);background:#fff}
+  .compare-toggle{margin-left:auto}
+  /* Compare tray */
+  .tray{position:sticky;bottom:0;background:#0b1220;color:#fff;border-top-left-radius:16px;border-top-right-radius:16px;padding:12px 16px;display:none}
+  .tray-inner{max-width:1200px;margin:auto;display:flex;align-items:center;gap:10px}
+  .tray .mini{display:flex;gap:10px;flex:1;overflow:auto}
+  .pill{background:#1f2937;color:#fff;padding:6px 10px;border-radius:999px;font-size:12px;display:flex;align-items:center;gap:8px;white-space:nowrap}
+  .pill button{background:transparent;border:none;color:#98a2b3;cursor:pointer}
+  .tray .actions{display:flex;gap:8px}
+  /* Modal */
+  .modal{position:fixed;inset:0;display:none;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:16px}
+  .modal-card{background:#fff;border-radius:14px;max-width:1000px;width:100%;overflow:hidden}
+  .modal-head{background:var(--primary);color:#fff;padding:12px 16px;font-weight:700;display:flex;align-items:center;justify-content:space-between}
+  .modal-body{padding:12px;overflow:auto;max-height:80vh}
+  table{width:100%;border-collapse:collapse}
+  th,td{border-bottom:1px solid #eef2f7;padding:10px;text-align:left;vertical-align:top}
+  th{background:#f7f9fe;color:#0f172a}
+  .close{background:#fff;border:none;color:var(--primary);font-weight:800;padding:6px 10px;border-radius:8px;cursor:pointer}
+  footer{margin:40px 0;text-align:center;color:#98a2b3}
+</style>
 </head>
 <body>
-  <nav>
-    <div><strong>Webi</strong></div>
-    <div>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#benefits">Why Us</a>
+
+<nav>
+  <div class="nav-wrap">
+    <div class="brand">Webi</div>
+    <div class="nav-links">
+      <a href="#browse">Browse</a>
+      <a href="#compare">Compare</a>
       <a href="#contact">Contact</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <header>
-    <h1>Compare & Choose Smart</h1>
-    <p>Your one-stop platform to research and compare everything</p>
-  </header>
+<header>
+  <h1>Compare & Choose Smart</h1>
+  <p class="sub">Filter products, track prices, and compare specs side-by-side like a pro.</p>
+  <a class="cta" href="#browse">Start Comparing</a>
+</header>
 
-  <section id="about">
-    <h2>About Webi</h2>
-    <p><strong>Webi</strong> is an online comparison and research platform for:</p>
-    <ul>
-      <li>Physical Goods: Clothing, electronics, books, etc.</li>
-      <li>Digital Products: E-books, software, courses, etc.</li>
-      <li>Services: Consulting, writing, marketing</li>
-      <li>Handmade Items: Jewelry, crafts, art</li>
-    </ul>
-    <p>Compare prices, features, and deals across online retailers.</p>
-  </section>
+<main id="browse" class="shell">
+  <!-- Filters -->
+  <aside class="filters" aria-label="Filters">
+    <h3>Filter Products</h3>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="features">
-      <div>
-        <a href="https://www.google.com/search?q=product+comparison" target="_blank">
-          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Product Comparison" />
-        </a>
-        <h3>🔍 Product Comparison</h3>
-        <p>Compare products instantly via Google Search.</p>
-      </div>
-      <div>
-        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Price Tracking" onclick="document.getElementById('priceModal').style.display='block'" />
-        <h3>📈 Price Tracking</h3>
-        <p>Track deals across Amazon, Flipkart, and more.</p>
-      </div>
-      <div>
-        <a href="https://webi1008.github.io/Webi/" target="_blank">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80" alt="Buying Guides" />
-        </a>
-        <h3>🧠 Buying Guides</h3>
-        <p>Expert advice for smart shopping decisions.</p>
-      </div>
-      <div>
-        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=400&q=80" alt="User Reviews" />
-        <h3>🗣️ User Reviews</h3>
-        <p>
-          “I had a fantastic experience working with Webi! Their team was incredibly responsive and knowledgeable. I especially appreciated their transparency and efficiency. Highly recommended!” — Jon Bein
-        </p>
+    <div class="f-group">
+      <label for="search">Search</label>
+      <input id="search" type="text" placeholder="Search by name or brand…">
+    </div>
+
+    <div class="f-group">
+      <label for="category">Category</label>
+      <select id="category">
+        <option value="All">All</option>
+        <option>Smartphones</option>
+        <option>Laptops</option>
+        <option>Headphones</option>
+        <option>Smartwatches</option>
+        <option>TVs</option>
+      </select>
+    </div>
+
+    <div class="f-group">
+      <label for="brand">Brand</label>
+      <select id="brand">
+        <option value="All">All</option>
+      </select>
+      <div class="chips" id="brandChips"></div>
+    </div>
+
+    <div class="f-group">
+      <label>Price Range (₹)</label>
+      <div style="display:flex;gap:8px">
+        <input id="minPrice" type="number" placeholder="Min" min="0">
+        <input id="maxPrice" type="number" placeholder="Max" min="0">
       </div>
     </div>
-  </section>
 
-  <div id="priceModal" class="modal" onclick="this.style.display='none'">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <h3>Choose a Site</h3>
-      <a href="https://www.amazon.in/" target="_blank">Amazon</a>
-      <a href="https://www.flipkart.com/" target="_blank">Flipkart</a>
-      <a href="https://www.91mobiles.com/" target="_blank">99Mobiles</a>
-      <a href="https://www.bestreviewsonline.in/new-deals" target="_blank">BestReviewsOnline Deals</a>
+    <button class="apply" id="applyFilters">Apply Filters</button>
+    <button class="clear" id="clearFilters">Clear</button>
+
+    <div style="margin-top:14px">
+      <div class="muted" style="font-weight:700;margin-bottom:6px">Quick Links</div>
+      <div class="chips">
+        <a class="chip" href="https://www.pricedekho.com/" target="_blank" rel="noopener">PriceDekho</a>
+        <a class="chip" href="https://www.91mobiles.com/" target="_blank" rel="noopener">91mobiles</a>
+        <a class="chip" href="https://www.trustpilot.com/" target="_blank" rel="noopener">Trustpilot</a>
+        <a class="chip" href="https://www.consumerreports.org/" target="_blank" rel="noopener">Consumer Reports</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Content -->
+  <section>
+    <div class="toolbar">
+      <div class="muted"><strong id="count"></strong> results</div>
+      <div class="search"><input id="searchTop" type="text" placeholder="🔍 Quick search…" style="width:100%;padding:10px;border:1px solid #d0d5dd;border-radius:8px"></div>
+      <div class="sort">
+        <select id="sortBy" style="width:100%;padding:10px;border:1px solid #d0d5dd;border-radius:8px">
+          <option value="relevance">Sort: Relevance</option>
+          <option value="priceAsc">Price: Low → High</option>
+          <option value="priceDesc">Price: High → Low</option>
+          <option value="ratingDesc">Rating: High → Low</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </section>
+</main>
+
+<!-- Compare tray -->
+<div class="tray" id="tray" aria-live="polite">
+  <div class="tray-inner">
+    <div class="muted" style="font-weight:700">Compare:</div>
+    <div class="mini" id="mini"></div>
+    <div class="actions">
+      <a href="#compare" class="btn btn-outline" id="openCompare">Open table</a>
+      <button class="btn btn-primary" id="clearCompare" type="button">Clear</button>
     </div>
   </div>
+</div>
 
-  <section id="benefits">
-    <h2>Why Choose Webi?</h2>
-    <ul>
-      <li>Fast & easy product search</li>
-      <li>Real-time price and deal updates</li>
-      <li>Expert-reviewed comparisons</li>
-      <li>Trusted by thousands of smart shoppers</li>
-    </ul>
-  </section>
+<!-- Compare Modal / Section -->
+<section id="compare" class="modal" aria-modal="true" role="dialog">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div>Comparison</div>
+      <button class="close" id="closeModal">Close</button>
+    </div>
+    <div class="modal-body">
+      <table id="cmpTable">
+        <!-- dynamic -->
+      </table>
+    </div>
+  </div>
+</section>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:email@123.com">email@123.com</a></p>
-  </section>
+<footer id="contact">
+  <p>© 2025 Webi — Built for smart shoppers.</p>
+</footer>
 
-  <footer>
-    &copy; 2025 Webi. All rights reserved.
-  </footer>
+<script>
+/* =========================
+   Sample Data (expandable)
+   ========================= */
+const PRODUCTS = [
+  // Smartphones
+  {id:1,  name:"iPhone 15 Pro Max", brand:"Apple", category:"Smartphones", price:149999, rating:4.8, battery:"4422 mAh", ram:"8 GB", storage:"256 GB", display:'6.7" OLED', image:"https://m.media-amazon.com/images/I/81X7tD3U3oL._SL1500_.jpg", link:"https://www.amazon.in/dp/B0CHX2T4PW"},
+  {id:2,  name:"Samsung Galaxy S24 Ultra", brand:"Samsung", category:"Smartphones", price:139999, rating:4.7, battery:"5000 mAh", ram:"12 GB", storage:"256 GB", display:'6.8" AMOLED', image:"https://m.media-amazon.com/images/I/71f7z6Ycs-L._SL1500_.jpg", link:"https://www.amazon.in/dp/B0CS87VJWC"},
+  {id:3,  name:"OnePlus 12", brand:"OnePlus", category:"Smartphones", price:64999, rating:4.6, battery:"5400 mAh", ram:"12 GB", storage:"256 GB", display:'6.82" AMOLED', image:"https://m.media-amazon.com/images/I/61V3yZcExyL._SL1500_.jpg", link:"https://www.amazon.in/s?k=oneplus+12"},
+  {id:4,  name:"Redmi Note 13 Pro+", brand:"Xiaomi", category:"Smartphones", price:32999, rating:4.5, battery:"5000 mAh", ram:"8 GB", storage:"256 GB", display:'6.67" AMOLED', image:"https://m.media-amazon.com/images/I/71w2c8V2pBL._SL1500_.jpg", link:"https://www.amazon.in/s?k=redmi+note+13+pro+"},
+  {id:5,  name:"Realme 12 Pro", brand:"Realme", category:"Smartphones", price:28999, rating:4.4, battery:"5000 mAh", ram:"8 GB", storage:"128 GB", display:'6.7" AMOLED', image:"https://m.media-amazon.com/images/I/61WeV+eV3fL._SL1200_.jpg", link:"https://www.amazon.in/s?k=realme+12+pro"},
+
+  // Laptops
+  {id:101,name:"MacBook Air M2", brand:"Apple", category:"Laptops", price:114999, rating:4.6, ram:"8 GB", storage:"256 GB SSD", display:'13.6" Retina', image:"https://m.media-amazon.com/images/I/71jG+e7roXL._SL1500_.jpg", link:"https://www.amazon.in/dp/B0B3B44N3N"},
+  {id:102,name:"ASUS TUF Gaming F15", brand:"ASUS", category:"Laptops", price:74999, rating:4.4, ram:"16 GB", storage:"512 GB SSD", display:'15.6" 144Hz', image:"https://m.media-amazon.com/images/I/81i0B6fyhML._SL1500_.jpg", link:"https://www.amazon.in/s?k=asus+tuf+gaming+f15"},
+  {id:103,name:"HP Pavilion 14", brand:"HP", category:"Laptops", price:58999, rating:4.3, ram:"16 GB", storage:"512 GB SSD", display:'14" IPS', image:"https://m.media-amazon.com/images/I/71c0GSxtEEL._SL1500_.jpg", link:"https://www.amazon.in/s?k=hp+pavilion+14"},
+
+  // Headphones
+  {id:201,name:"Sony WH-1000XM5", brand:"Sony", category:"Headphones", price:29999, rating:4.7, battery:"30 hrs", image:"https://m.media-amazon.com/images/I/61Id6WJDWqL._SL1500_.jpg", link:"https://www.amazon.in/dp/B09XS7JWHH"},
+  {id:202,name:"AirPods Pro (2nd Gen)", brand:"Apple", category:"Headphones", price:22999, rating:4.6, battery:"6 hrs", image:"https://m.media-amazon.com/images/I/61SUj2aKoEL._SL1500_.jpg", link:"https://www.amazon.in/s?k=airpods+pro+2"},
+  {id:203,name:"Boat Airdopes 141", brand:"boAt", category:"Headphones", price:1299, rating:4.2, battery:"42 hrs", image:"https://m.media-amazon.com/images/I/61DKcGr12OL._SL1500_.jpg", link:"https://www.amazon.in/s?k=boat+airdopes+141"},
+
+  // Smartwatches
+  {id:301,name:"Apple Watch Series 9", brand:"Apple", category:"Smartwatches", price:41999, rating:4.6, image:"https://m.media-amazon.com/images/I/71bUEhTt1hL._SL1500_.jpg", link:"https://www.amazon.in/s?k=apple+watch+series+9"},
+  {id:302,name:"Samsung Galaxy Watch6", brand:"Samsung", category:"Smartwatches", price:32999, rating:4.4, image:"https://m.media-amazon.com/images/I/61oF0vRkK1L._SL1500_.jpg", link:"https://www.amazon.in/s?k=galaxy+watch+6"},
+  {id:303,name:"Amazfit Bip 5", brand:"Amazfit", category:"Smartwatches", price:5999, rating:4.2, image:"https://m.media-amazon.com/images/I/61kH9tI5w0L._SL1500_.jpg", link:"https://www.amazon.in/s?k=amazfit+bip+5"},
+
+  // TVs
+  {id:401,name:"LG C3 OLED 55\"", brand:"LG", category:"TVs", price:119999, rating:4.7, display:'55" 4K OLED', image:"https://m.media-amazon.com/images/I/81tS7Gq1R-L._SL1500_.jpg", link:"https://www.amazon.in/s?k=lg+c3+oled"},
+  {id:402,name:"Samsung Crystal 4K 55\"", brand:"Samsung", category:"TVs", price:44999, rating:4.4, display:'55" 4K LED', image:"https://m.media-amazon.com/images/I/71a4ZQNqTiL._SL1500_.jpg", link:"https://www.amazon.in/s?k=samsung+crystal+4k+55"},
+  {id:403,name:"Xiaomi Smart TV X 43\"", brand:"Xiaomi", category:"TVs", price:24999, rating:4.2, display:'43" 4K LED', image:"https://m.media-amazon.com/images/I/81o-k3jJw-L._SL1500_.jpg", link:"https://www.amazon.in/s?k=mi+tv+43+4k"}
+];
+
+/* =========================
+   DOM Helpers
+   ========================= */
+const $ = (q, r=document) => r.querySelector(q);
+const $$ = (q, r=document) => Array.from(r.querySelectorAll(q));
+
+/* =========================
+   State
+   ========================= */
+let compareSet = new Set();
+let filters = {
+  search: "",
+  category: "All",
+  brand: "All",
+  minPrice: null,
+  maxPrice: null,
+  sortBy: "relevance"
+};
+
+/* =========================
+   Init brand options
+   ========================= */
+function initBrands(){
+  const brandSel = $("#brand");
+  const brands = Array.from(new Set(PRODUCTS.map(p=>p.brand))).sort();
+  brandSel.innerHTML = `<option value="All">All</option>` + brands.map(b=>`<option>${b}</option>`).join("");
+  $("#brandChips").innerHTML = brands.slice(0,6).map(b=>`<span class="chip" data-brand="${b}">${b}</span>`).join("");
+  $("#brandChips").addEventListener("click", (e)=>{
+    const chip = e.target.closest(".chip");
+    if(!chip) return;
+    $("#brand").value = chip.dataset.brand;
+    applyFilters();
+  });
+}
+
+/* =========================
+   Render Grid
+   ========================= */
+function render(){
+  let items = PRODUCTS.slice();
+
+  // Text search across name + brand
+  const q = (filters.search||"").trim().toLowerCase();
+  if(q) items = items.filter(p => (p.name+" "+p.brand).toLowerCase().includes(q));
+
+  // Category
+  if(filters.category !== "All") items = items.filter(p => p.category === filters.category);
+
+  // Brand
+  if(filters.brand !== "All") items = items.filter(p => p.brand === filters.brand);
+
+  // Price range
+  if(filters.minPrice != null) items = items.filter(p => p.price >= filters.minPrice);
+  if(filters.maxPrice != null) items = items.filter(p => p.price <= filters.maxPrice);
+
+  // Sort
+  if(filters.sortBy === "priceAsc") items.sort((a,b)=>a.price-b.price);
+  if(filters.sortBy === "priceDesc") items.sort((a,b)=>b.price-a.price);
+  if(filters.sortBy === "ratingDesc") items.sort((a,b)=>b.rating-a.rating);
+
+  $("#count").textContent = items.length;
+
+  // Grid cards
+  const html = items.map(p => `
+    <article class="card" data-id="${p.id}">
+      <div class="thumb"><img src="${p.image}" alt="${p.name}"></div>
+      <div class="title">${p.name}</div>
+      <div class="muted">${p.brand} · ${p.category}</div>
+      <div class="row">
+        <span class="price">₹${p.price.toLocaleString("en-IN")}</span>
+        <span class="rate">⭐ ${p.rating}</span>
+      </div>
+      <div class="row">
+        ${p.ram ? `<span class="chip">${p.ram}</span>`: "" }
+        ${p.storage ? `<span class="chip">${p.storage}</span>`: "" }
+        ${p.display ? `<span class="chip">${p.display}</span>`: "" }
+        ${p.battery ? `<span class="chip">${p.battery}</span>`: "" }
+      </div>
+      <div class="row">
+        <a class="btn btn-primary" href="${p.link}" target="_blank" rel="noopener">View Deal</a>
+        <button class="btn btn-outline compare-toggle" data-id="${p.id}">
+          ${compareSet.has(p.id) ? "Remove" : "Compare"}
+        </button>
+      </div>
+    </article>
+  `).join("");
+
+  $("#grid").innerHTML = html;
+
+  // bind compare buttons
+  $$("#grid .compare-toggle").forEach(btn=>{
+    btn.addEventListener("click", (e)=>{
+      const id = Number(e.currentTarget.dataset.id);
+      toggleCompare(id);
+    });
+  });
+
+  updateTray();
+}
+
+/* =========================
+   Compare
+   ========================= */
+function toggleCompare(id){
+  if(compareSet.has(id)){ compareSet.delete(id); }
+  else {
+    if(compareSet.size>=4){ alert("You can compare up to 4 items at a time."); return; }
+    compareSet.add(id);
+  }
+  render();
+}
+
+function updateTray(){
+  const tray = $("#tray");
+  const mini = $("#mini");
+  if(compareSet.size===0){ tray.style.display="none"; return; }
+  tray.style.display="block";
+  const cards = [...compareSet].map(id=>{
+    const p = PRODUCTS.find(x=>x.id===id);
+    return `<span class="pill">${p.name}<button title="Remove" data-id="${id}">✕</button></span>`;
+  }).join("");
+  mini.innerHTML = cards;
+
+  // remove buttons
+  mini.querySelectorAll("button").forEach(b=>{
+    b.addEventListener("click",(e)=>{
+      const id = Number(e.currentTarget.dataset.id);
+      compareSet.delete(id);
+      render();
+    });
+  });
+}
+
+function openCompareTable(){
+  if(compareSet.size===0){ alert("Add products to compare first."); return; }
+  // build compare table
+  const cols = [...compareSet].map(id=>PRODUCTS.find(p=>p.id===id));
+  const specsKeys = ["brand","category","price","rating","ram","storage","display","battery"];
+
+  const head = `
+    <tr>
+      <th>Feature</th>
+      ${cols.map(p=>`<th>
+        <div class="row" style="gap:6px"><img src="${p.image}" alt="${p.name}" style="height:40px"><strong>${p.name}</strong></div>
+        <div class="muted">${p.brand}</div>
+      </th>`).join("")}
+    </tr>`;
+
+  const rows = specsKeys.map(key=>{
+    return `<tr>
+      <td style="font-weight:700;text-transform:capitalize">${key}</td>
+      ${cols.map(p=>{
+        let val = p[key] ?? "—";
+        if(key==="price") val = "₹"+ Number(val).toLocaleString("en-IN");
+        return `<td>${val}</td>`;
+      }).join("")}
+    </tr>`;
+  }).join("");
+
+  $("#cmpTable").innerHTML = head + rows;
+  $("#compare").style.display = "flex";
+}
+
+/* =========================
+   Filters + Events
+   ========================= */
+function applyFilters(){
+  filters.search = $("#search").value.trim();
+  const quick = $("#searchTop").value.trim();
+  if(quick && !filters.search) filters.search = quick; // prioritize quick if main empty
+
+  filters.category = $("#category").value;
+  filters.brand = $("#brand").value;
+
+  const min = $("#minPrice").value; const max = $("#maxPrice").value;
+  filters.minPrice = min ? Number(min) : null;
+  filters.maxPrice = max ? Number(max) : null;
+
+  filters.sortBy = $("#sortBy").value;
+  render();
+}
+
+function clearFilters(){
+  $("#search").value = "";
+  $("#searchTop").value = "";
+  $("#category").value = "All";
+  $("#brand").value = "All";
+  $("#minPrice").value = "";
+  $("#maxPrice").value = "";
+  $("#sortBy").value = "relevance";
+  filters = {search:"",category:"All",brand:"All",minPrice:null,maxPrice:null,sortBy:"relevance"};
+  render();
+}
+
+function wireUI(){
+  $("#applyFilters").addEventListener("click", applyFilters);
+  $("#clearFilters").addEventListener("click", clearFilters);
+  $("#searchTop").addEventListener("input", ()=>{ filters.search = $("#searchTop").value; render(); });
+  $("#sortBy").addEventListener("change", applyFilters);
+  $("#openCompare").addEventListener("click",(e)=>{ e.preventDefault(); openCompareTable(); });
+  $("#clearCompare").addEventListener("click", ()=>{ compareSet.clear(); render(); });
+  $("#closeModal").addEventListener("click", ()=>{ $("#compare").style.display="none"; });
+  // close modal on backdrop click
+  $("#compare").addEventListener("click", (e)=>{ if(e.target.id==="compare") $("#compare").style.display="none"; });
+}
+
+/* =========================
+   Kickoff
+   ========================= */
+initBrands();
+wireUI();
+render();
+</script>
 </body>
 </html>
