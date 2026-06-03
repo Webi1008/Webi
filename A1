@@ -75,14 +75,93 @@
   th{background:#f7f9fe;color:#0f172a}
   .close{background:#fff;border:none;color:var(--primary);font-weight:800;padding:6px 10px;border-radius:8px;cursor:pointer}
   footer{margin:40px 0;text-align:center;color:#98a2b3}
+
+
+  /* Responsive polish */
+  button, .btn, .cta, select, input {font:inherit}
+  button, .btn, .cta, .chip {touch-action:manipulation}
+  img{max-width:100%}
+  .menu-btn{display:none;background:#f2f6ff;color:var(--primary);border:1px solid #dbe7ff;border-radius:10px;padding:9px 12px;font-weight:800;cursor:pointer}
+  .skip-link{position:absolute;left:-999px;top:8px;background:#fff;color:var(--primary);padding:8px 12px;border-radius:8px;z-index:999}
+  .skip-link:focus{left:8px}
+
+  @media (min-width: 1280px){
+    .shell{grid-template-columns:300px 1fr;gap:24px}
+    .grid{gap:18px}
+    .thumb{height:180px}
+  }
+
+  @media (max-width: 960px){
+    .filters{position:static;top:auto}
+    .filters form, .filters{width:100%}
+    .toolbar{align-items:stretch}
+    .toolbar .muted{width:100%}
+    .search,.sort{min-width:0;flex:1 1 260px}
+  }
+
+  @media (max-width: 720px){
+    body{font-size:15px}
+    .nav-wrap{padding:10px 14px;flex-wrap:wrap;gap:10px}
+    .brand{font-size:22px}
+    .menu-btn{display:inline-flex;align-items:center;gap:6px;margin-left:auto}
+    .nav-links{display:none;width:100%;padding:8px 0 4px;border-top:1px solid #eef2f7}
+    .nav-links.open{display:grid;grid-template-columns:1fr;gap:6px}
+    .nav-links a{margin:0;padding:12px;border-radius:10px;background:#f7f9fe}
+
+    header{padding:48px 16px 42px}
+    h1{font-size:clamp(30px,9vw,40px);line-height:1.08}
+    .sub{font-size:16px;max-width:520px;margin-left:auto;margin-right:auto}
+    .cta{width:100%;max-width:320px;padding:14px 20px}
+
+    .shell{margin:16px auto;padding:0 14px;gap:14px}
+    .filters{padding:14px;border-radius:14px}
+    .filters h3{font-size:18px}
+    select,input[type="text"],input[type="number"]{min-height:46px;font-size:16px}
+    .apply,.clear{min-height:46px}
+    .chips{gap:7px}
+    .chip{font-size:12px;padding:7px 10px}
+
+    .toolbar{gap:10px}
+    .toolbar .search,.toolbar .sort{flex-basis:100%}
+    .grid{grid-template-columns:1fr;gap:14px}
+    .card{padding:14px;border-radius:16px}
+    .card:hover{transform:none}
+    .thumb{height:210px}
+    .title{font-size:16px}
+    .row .btn{flex:1 1 130px;min-height:44px;display:flex;align-items:center;justify-content:center}
+    .compare-toggle{margin-left:0}
+
+    .tray{position:fixed;left:0;right:0;bottom:0;z-index:70;border-radius:16px 16px 0 0;padding:10px 12px;box-shadow:0 -10px 30px rgba(0,0,0,.25)}
+    .tray-inner{flex-direction:column;align-items:stretch;gap:8px}
+    .tray .mini{width:100%;padding-bottom:2px}
+    .tray .actions{width:100%;display:grid;grid-template-columns:1fr 1fr}
+    .tray .actions .btn,.tray .actions button{width:100%;min-height:42px}
+    body:has(.tray[style*="block"]){padding-bottom:138px}
+
+    .modal{padding:10px;align-items:flex-end}
+    .modal-card{max-height:92vh;border-radius:16px 16px 0 0}
+    .modal-body{max-height:78vh;padding:8px}
+    table{min-width:680px}
+    th,td{padding:9px;font-size:13px}
+    footer{padding:0 14px;margin:32px 0 150px}
+  }
+
+  @media (max-width: 380px){
+    .thumb{height:180px}
+    .tray .actions{grid-template-columns:1fr}
+    body:has(.tray[style*="block"]){padding-bottom:180px}
+  }
+
 </style>
 </head>
 <body>
+<a class="skip-link" href="#browse">Skip to products</a>
 
 <nav>
   <div class="nav-wrap">
     <div class="brand">Webi</div>
-    <div class="nav-links">
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰ Menu</button>
+    <div class="nav-links" id="navLinks">
       <a href="#browse">Browse</a>
       <a href="#compare">Compare</a>
       <a href="#contact">Contact</a>
@@ -240,7 +319,22 @@ const $$ = (q, r=document) => Array.from(r.querySelectorAll(q));
 /* =========================
    State
    ========================= */
-let compareSet = new Set();
+const SAVED_COMPARE_KEY = "webiCompare";
+
+function loadSavedCompare(){
+  try {
+    const saved = JSON.parse(localStorage.getItem(SAVED_COMPARE_KEY)) || [];
+    return new Set(saved.map(Number));
+  } catch (error) {
+    return new Set();
+  }
+}
+
+function saveCompare(){
+  localStorage.setItem(SAVED_COMPARE_KEY, JSON.stringify([...compareSet]));
+}
+
+let compareSet = loadSavedCompare();
 let filters = {
   search: "",
   category: "All",
@@ -293,6 +387,18 @@ function render(){
 
   $("#count").textContent = items.length;
 
+  if(items.length === 0){
+    $("#grid").innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:50px 20px;background:#fff;border:1px solid #eef2f7;border-radius:14px">
+        <h2 style="margin:0 0 8px;color:var(--primary)">No Products Found</h2>
+        <p class="muted" style="margin:0 0 16px">Try changing the search, category, brand, or price range.</p>
+        <button class="clear" type="button" onclick="clearFilters()" style="max-width:180px">Reset Filters</button>
+      </div>
+    `;
+    updateTray();
+    return;
+  }
+
   // Grid cards
   const html = items.map(p => `
     <article class="card" data-id="${p.id}">
@@ -335,11 +441,13 @@ function render(){
    Compare
    ========================= */
 function toggleCompare(id){
-  if(compareSet.has(id)){ compareSet.delete(id); }
-  else {
+  if(compareSet.has(id)){
+    compareSet.delete(id);
+  } else {
     if(compareSet.size>=4){ alert("You can compare up to 4 items at a time."); return; }
     compareSet.add(id);
   }
+  saveCompare();
   render();
 }
 
@@ -359,6 +467,7 @@ function updateTray(){
     b.addEventListener("click",(e)=>{
       const id = Number(e.currentTarget.dataset.id);
       compareSet.delete(id);
+      saveCompare();
       render();
     });
   });
@@ -397,15 +506,27 @@ function openCompareTable(){
 /* =========================
    Filters + Events
    ========================= */
-function applyFilters(){
-  filters.search = $("#search").value.trim();
-  const quick = $("#searchTop").value.trim();
-  if(quick && !filters.search) filters.search = quick; // prioritize quick if main empty
+function applyFilters(source = null){
+  const sideSearch = $("#search").value.trim();
+  const topSearch = $("#searchTop").value.trim();
+
+  if(source === "top"){
+    filters.search = topSearch;
+    $("#search").value = topSearch;
+  } else if(source === "side"){
+    filters.search = sideSearch;
+    $("#searchTop").value = sideSearch;
+  } else {
+    filters.search = sideSearch || topSearch;
+    $("#search").value = filters.search;
+    $("#searchTop").value = filters.search;
+  }
 
   filters.category = $("#category").value;
   filters.brand = $("#brand").value;
 
-  const min = $("#minPrice").value; const max = $("#maxPrice").value;
+  const min = $("#minPrice").value;
+  const max = $("#maxPrice").value;
   filters.minPrice = min ? Number(min) : null;
   filters.maxPrice = max ? Number(max) : null;
 
@@ -426,12 +547,37 @@ function clearFilters(){
 }
 
 function wireUI(){
-  $("#applyFilters").addEventListener("click", applyFilters);
+  $("#applyFilters").addEventListener("click", () => applyFilters());
   $("#clearFilters").addEventListener("click", clearFilters);
-  $("#searchTop").addEventListener("input", ()=>{ filters.search = $("#searchTop").value; render(); });
-  $("#sortBy").addEventListener("change", applyFilters);
+
+  // Live filtering
+  $("#search").addEventListener("input", () => applyFilters("side"));
+  $("#searchTop").addEventListener("input", () => applyFilters("top"));
+  $("#category").addEventListener("change", () => applyFilters());
+  $("#brand").addEventListener("change", () => applyFilters());
+  $("#minPrice").addEventListener("input", () => applyFilters());
+  $("#maxPrice").addEventListener("input", () => applyFilters());
+  $("#sortBy").addEventListener("change", () => applyFilters());
+
+  const menuBtn = $("#menuBtn");
+  const navLinks = $("#navLinks");
+  if(menuBtn && navLinks){
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+      menuBtn.textContent = isOpen ? "✕ Close" : "☰ Menu";
+    });
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰ Menu";
+      });
+    });
+  }
+
   $("#openCompare").addEventListener("click",(e)=>{ e.preventDefault(); openCompareTable(); });
-  $("#clearCompare").addEventListener("click", ()=>{ compareSet.clear(); render(); });
+  $("#clearCompare").addEventListener("click", ()=>{ compareSet.clear(); saveCompare(); render(); });
   $("#closeModal").addEventListener("click", ()=>{ $("#compare").style.display="none"; });
   // close modal on backdrop click
   $("#compare").addEventListener("click", (e)=>{ if(e.target.id==="compare") $("#compare").style.display="none"; });
