@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://webi1008.github.io/Webi/</loc>
     <priority>1.0</priority>
-    <changefreq>weekly</changefreq>
   </url>
+
+  <url>
+    <loc>https://webi1008.github.io/Webi/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://webi1008.github.io/Webi/contact.html</loc>
+  </url>
+
+  <url>
+    <loc>https://webi1008.github.io/Webi/privacy-policy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://webi1008.github.io/Webi/terms.html</loc>
+  </url>
+
 </urlset>
