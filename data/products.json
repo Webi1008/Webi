@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Samsung Galaxy S26 Ultra",
+    "price": "119992",
+    "rating": "4.8",
+    "image": "images/s26-ultra.webp",
+    "link": "#"
+  },
+  {
+    "id": 2,
+    "name": "iPhone 17",
+    "price": "82900",
+    "rating": "4.7",
+    "image": "images/iphone17.webp",
+    "link": "#"
+  },
+  {
+    "id": 3,
+    "name": "Google Pixel 10a",
+    "price": "47970",
+    "rating": "4.6",
+    "image": "images/pixel10a.webp",
+    "link": "#"
+  }
+]
