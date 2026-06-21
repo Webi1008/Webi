@@ -1,5 +1,4 @@
 User-agent: *
-
 Allow: /
 
 Sitemap: https://webi1008.github.io/Webi/sitemap.xml
